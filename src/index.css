@@ -13,17 +13,24 @@
   -moz-osx-font-smoothing: grayscale;
 }
 
-.showArtist {
-  border: 1px white;
-  border-radius: 10px;
-  display: inline-block;
+.artists-container {
+  display: flex;
   flex-wrap: wrap;
-  gap: 20px;
   justify-content: center;
-  padding: 20px;
+  gap: 20px;
 }
 
-.artist{
+.artist-card {
+  background-color: #1e1e1e;
+  padding: 16px;
+  border-radius: 8px;
+  width: 300px;
+  color: white;
+  text-align: left;
+}
+
+
+.artist {
   align-items: left;
   justify-items: left;
 }
