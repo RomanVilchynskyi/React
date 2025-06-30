@@ -3,6 +3,11 @@ import reactLogo from './assets/react.svg'
 import viteLogo from '/vite.svg'
 import './App.css'
 import ShowInfo from './components/showInfo';
+import { BrowserRouter, Route, Routes } from 'react-router-dom';
+import Layout from './components/Layout';
+import Home from './components/Home';
+import MPopWork from './components/MPopWork';
+import NoPage from './components/NoPage';
 
 const artistWorks = [
   {
@@ -67,15 +72,16 @@ function App() {
   const [count, setCount] = useState(0)
 
   return (
-    <>
-      <div className='artist'>
-        <div><strong>Іван Марчук</strong></div>
-        <p><strong>Народився - 12 травня 1936 року, с. Москалівка, Тернопільська область, Україна</strong></p>
-        <p><strong>Стиль: постімпресіонізм, експресіонізм, сюрреалізм, абстракція</strong></p>
-        <p><strong>Відомий як: один із найвідоміших українських художників у світі</strong></p>
-      </div>
-      {artistWorks.length > 0 ? <ShowInfo artists={artistWorks} /> : <div>Немає робіт для відображення</div>}
-    </>
+    <BrowserRouter>
+      <Routes>
+        <Route path="/" element={<Layout />}>
+          <Route index element={<Home />} />
+          <Route path="mostpopularwork" element={<MPopWork />} />
+          <Route path="works" element={<ShowInfo artists={artistWorks} />} />
+          <Route path="*" element={<NoPage />} />
+        </Route>
+      </Routes>
+    </BrowserRouter>
   )
 }
 
